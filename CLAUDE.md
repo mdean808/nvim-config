@@ -51,14 +51,18 @@ return {
 ## Enabled LazyVim Extras
 
 Extras configured in `lazyvim.json`:
-- Languages: TypeScript, Svelte, Vue, Python, Rust, Docker, Terraform, SQL, JSON, YAML, Markdown, Git, Tailwind
+- Languages: TypeScript, Vue, Python, Rust, Docker, Terraform, SQL, JSON, YAML, Markdown, Git, Tailwind
 - Formatting: Prettier
 - Linting: ESLint
 - Editor: neo-tree, dial
 - Util: dot, mini-hipatterns
 
-Biome is not a LazyVim extra. `lua/plugins/formatting.lua` registers it with
-conform and gates it behind the presence of a `biome.json`.
+Svelte is deliberately not an extra. The extra injected `typescript-svelte-plugin`
+into vtsls's `globalPlugins`, loading the Svelte compiler into every tsserver in
+every project (~60 MB each, and vtsls runs two). `svelte-language-server` is
+pinned in `lua/plugins/mason.lua` instead and reaches `vim.lsp.enable()` through
+mason-lspconfig's `automatic_enable`, which enables every installed Mason
+package. Trade-off: no cross-file TS -> Svelte references or rename.
 
 ## Custom Keymaps (lua/config/keymaps.lua)
 

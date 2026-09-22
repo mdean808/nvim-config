@@ -27,14 +27,14 @@ return {
               "thumbs.db",
             },
             always_show = {
-              "CLAUDE.md",
+              "CLAUDE.local.md",
               ".scratch",
-              "docs",
+              ".local",
             },
             always_show_by_pattern = {
               ".env*",
               "*/.scratch/*",
-              "*/docs/*",
+              "*/.local/*",
             },
           },
         },

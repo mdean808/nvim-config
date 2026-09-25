@@ -3,7 +3,7 @@ local unignored = {
   rg = { ".env", ".env.*", "**/.scratch/**", "CLAUDE.md", "**/docs/**" },
 }
 
-local heavy_dirs = { ".git", "node_modules", ".venv", "target" }
+local heavy_dirs = { ".git", "node_modules", ".venv", "target", "build", "dist" }
 
 local function rg_globs(globs, prefix)
   return vim.tbl_map(function(glob)
@@ -58,7 +58,7 @@ return {
             hidden = true,
             ignored = false,
             finder = {
-              finder("grep", { glob = rg_globs(unignored.rg, "!") }),
+              finder("grep", { glob = vim.list_extend(rg_globs(heavy_dirs, "!"), rg_globs(unignored.rg, "!")) }),
               finder("grep", { ignored = true, glob = unignored_globs() }),
             },
           },

@@ -6,8 +6,8 @@ return {
         local blend_bg = require("tokyonight.util").blend_bg
         hl.DiffAdd = { bg = blend_bg(c.git.add, 0.3) }
         hl.DiffDelete = { bg = blend_bg(c.git.delete, 0.3) }
-        hl.WinSeparator = { fg = c.fg }
-        hl.ColorfulWinSep = { fg = c.green }
+        hl.WinSeparator = { fg = c.bg_highlight }
+        hl.ColorfulWinSep = { fg = c.blue }
       end,
     },
   },

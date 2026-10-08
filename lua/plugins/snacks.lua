@@ -50,6 +50,7 @@ return {
               finder("files", {
                 cmd = "rg",
                 ignored = true,
+                follow = true,
                 args = unignored_glob_args(),
               }),
             },
@@ -59,7 +60,7 @@ return {
             ignored = false,
             finder = {
               finder("grep", { glob = vim.list_extend(rg_globs(heavy_dirs, "!"), rg_globs(unignored.rg, "!")) }),
-              finder("grep", { ignored = true, glob = unignored_globs() }),
+              finder("grep", { ignored = true, follow = true, glob = unignored_globs() }),
             },
           },
           select = {

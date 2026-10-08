@@ -75,10 +75,6 @@ local function draw_junctions(separator, junction_at)
   vim.api.nvim_buf_set_lines(separator.buffer, 0, -1, false, lines)
 end
 
-local function never_halve_two_window_borders()
-  return math.huge
-end
-
 return {
   {
     "nvim-zh/colorful-winsep.nvim",
@@ -90,7 +86,6 @@ return {
     },
     config = function(_, opts)
       require("colorful-winsep").setup(opts)
-      require("colorful-winsep.utils").count_windows = never_halve_two_window_borders
 
       local view = require("colorful-winsep.view")
       local render = view.render

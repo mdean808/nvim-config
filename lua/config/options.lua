@@ -23,3 +23,8 @@ local function linked_scratch_root(buf)
 end
 
 vim.g.root_spec = { linked_scratch_root, "lsp", { ".git", "lua" }, "cwd" }
+
+if vim.env.TMUX then
+  vim.g.clipboard = "tmux"
+  vim.opt.clipboard = "unnamedplus"
+end
